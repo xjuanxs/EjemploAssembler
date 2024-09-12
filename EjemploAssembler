@@ -1,0 +1,19 @@
+Ejemplo Assembler: Resta de dos números 
+
+section .data
+    num1 db 30       ; Definir el primer número (30)
+    num2 db 10       ; Definir el segundo número (10)
+    result db 0      ; Variable para almacenar el resultado
+
+section .text
+    global _start    ; Punto de entrada del programa
+
+_start:
+    mov al, [num1]   ; Cargar el valor de num1 en el registro AL
+    sub al, [num2]   ; Restar el valor de num2 al valor en AL
+    mov [result], al ; Almacenar el resultado en la variable "result"
+
+    ; Llamar a ExitProcess para salir del programa
+    mov eax, [ExitProcess]  ; Cargar la dirección de ExitProcess en EAX
+    push 0                  ; Código de salida 0
+    call eax                ; Llamar a ExitProcess para salir
